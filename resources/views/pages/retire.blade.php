@@ -27,7 +27,7 @@
                     <a href="{{ Route('users') }}" class="btn btn-secondary btn-block"> Daftar Karyawan</a>
                     @endcan
                     @can('application.authorize')
-                    <a href="{{ Route ('retireList') }}" class="btn btn-secondary btn-block">  Karyawan Pensiun</a>
+                    <a href="{{ Route ('retireList') }}" class="btn btn-secondary btn-block"> Karyawan Pensiun</a>
                     @endcan
                     @can('application.authorize')
                     <a href="#" class="btn btn-secondary btn-block"> Cetak SK Pensiun</a>
@@ -41,22 +41,33 @@
                 </div>
             </div>
         </div>
-                <div class="col-md-9 mb-5">
-                    <div class="card"> 
-                        <div class="card-header">
-                            <span class="display-5">Pengajuan Tertunda</span>
-                        </div>
-                    
-                        <div class="card-body">
-                            @forelse ($applications as $application)
-                                <x-preview.application :application='$application' />
-                                <x-modal.application :application='$application' />
-                            @empty
-                                <p>Data tidak tersedia</p>
-                            @endforelse
-                        </div>
-                    </div>
-                </div>
+        <div class="col-md-9 mb-5">
+            <div class="container">
+                <h2>Daftar Karyawan Pensiun Menunggu role management </h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Tanggal Pensiun</th>
+                            <th>Cetak SK Pensiun</th>
+                            <th></th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($users as $user)
+                        <tr>
+                            <td>{{ $user->name }}</td>
+                            <td></td>
+                            {{-- <td><a href="{{ Route ('cetakSK') }}" class="btn btn-primary">Cetak</a></td> --}}
+                            <td><a href="{{ route('cetakSK', ['name' => $user->name]) }}" class="btn btn-primary">Cetak</a></td>
+                            {{-- <td>{{ $user->retire_date }}</td> --}}
+                            
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </main>

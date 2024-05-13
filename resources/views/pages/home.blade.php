@@ -27,7 +27,10 @@
                     <a href="{{ Route('users') }}" class="btn btn-secondary btn-block"> Daftar Karyawan</a>
                     @endcan
                     @can('application.authorize')
-                    <a href="#" class="btn btn-secondary btn-block"> Pensiun Karyawan</a>
+                    <a href="{{ Route ('retireList') }}" class="btn btn-secondary btn-block"> Karyawan Pensiun</a>
+                    @endcan
+                    @can('application.authorize')
+                    <a href="#" class="btn btn-secondary btn-block"> Cetak SK Pensiun</a>
                     @endcan
                     @can('application.authorize')
                     <a href="#" class="btn btn-secondary btn-block"> Rekrutmen Karyawan</a>

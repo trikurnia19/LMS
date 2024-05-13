@@ -27,7 +27,10 @@
                     <a href="{{ Route('users') }}" class="btn btn-secondary btn-block"> Daftar Karyawan</a>
                     @endcan
                     @can('application.authorize')
-                    <a href="#" class="btn btn-secondary btn-block"> Pensiun Karyawan</a>
+                    <a href="{{ Route ('retireList') }}" class="btn btn-secondary btn-block"> Karyawan Pensiun</a>
+                    @endcan
+                    @can('application.authorize')
+                    <a href="#" class="btn btn-secondary btn-block"> Cetak SK Pensiun</a>
                     @endcan
                     @can('application.authorize')
                     <a href="#" class="btn btn-secondary btn-block"> Rekrutmen Karyawan</a>
@@ -50,6 +53,7 @@
                             <th>Jenis Kelamin</th>
                             <th>Nomor Telepon</th>
                             <th>Alamat</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,6 +65,9 @@
                             <td>{{ $user->gender }}</td>
                             <td>{{ $user->phone_number }}</td>
                             <td>{{ $user->address }}</td>
+                            <td><a href="#" class="btn btn-primary">Pensiunkan</a></td>
+                            {{-- <a href="{{ route('user.MakeRetire', $user->id) }}" class="btn btn-primary">Edit</a> --}}
+                            
                         </tr>
                         @endforeach
                     </tbody>
