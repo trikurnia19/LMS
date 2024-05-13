@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LeaveApplicationController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,5 +29,5 @@ Route::group(['middleware' => ['can:application.authorize']], function () {
     Route::post('/action/{application}', [LeaveApplicationController::class, 'update'])->name('update');
     Route::get('/employee', [PagesController::class, 'employeeView'])->name('employeeView');
     Route::get('/users', [PagesController::class, 'listUsers'])->name('users');
-  
+    Route::post('/user',[UserController::class,'store'])->name('createUser');
 });

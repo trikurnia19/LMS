@@ -43,7 +43,7 @@
                 <div class="card-header">{{ __('Daftar') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('createUser') }}">
                         @csrf
 
                         <div class="form-group row">
