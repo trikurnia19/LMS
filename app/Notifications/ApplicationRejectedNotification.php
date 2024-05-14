@@ -26,15 +26,15 @@ class ApplicationRejectedNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Leave Application of '.$this->application->applier->name.' is Rejected')
-                    ->line('Leave application of '.$this->application->applier->name.' for '.$this->application->duration.' days started from '.$this->application->start_date.' was Rejected by authority.')
-                    ->line('We are sorry for that.');
+                    ->subject('Cuti yang diajukan oleh '.$this->application->applier->name.' ditolak')
+                    ->line('Cuti yang diajukan oleh '.$this->application->applier->name.' selama '.$this->application->duration.' hari dimulai dari '.$this->application->start_date.' ditolak oleh Manajemen.')
+                    ->line('Kami mohon maaf atas hal tersebut.');
     }
 
     public function toArray($notifiable)
     {
         return [
-            'data'=>'Leave application of '.$this->application->applier->name.' for '.$this->application->duration.' days started from '.$this->application->start_date.' was Rejected by authority.',
+            'data'=>'Cuti yang diajukan oleh '.$this->application->applier->name.' selama '.$this->application->duration.' hari dimulai dari '.$this->application->start_date.' ditolak oleh Manajemen.',
         ];
     }
 }

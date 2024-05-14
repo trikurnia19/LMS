@@ -26,6 +26,7 @@ Route::group(['middleware' => ['can:application.create']], function () {
     Route::get('/apply', [PagesController::class, 'leaveApplicationView'])->name('applyView');
     Route::post('/apply', [LeaveApplicationController::class, 'store'])->name('store');
 });
+
 Route::group(['middleware' => ['can:application.authorize']], function () {
     Route::get('/action', [PagesController::class, 'actionView'])->name('actionView');
     Route::post('/action/{application}', [LeaveApplicationController::class, 'update'])->name('update');
@@ -33,6 +34,13 @@ Route::group(['middleware' => ['can:application.authorize']], function () {
     //Tambahkan Karyawan
     Route::get('/employee', [PagesController::class, 'employeeView'])->name('employeeView');
     Route::post('/user',[UserController::class,'store'])->name('createUser');
+
+    //Edit Karyawan
+    Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('editUser');
+    Route::put('/user/{user}', [UserController::class, 'updateUser'])->name('updateUser');
+
+    //Delete Karyawan
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('deleteUser');
 
     //Daftar Karyawan
     Route::get('/users', [PagesController::class, 'listUsers'])->name('users');

@@ -42,23 +42,42 @@
             </div>
         </div>
 
-        <div class="col-md-9 mb-5">
+        <div class="col-md-8 ">
             <div class="card">
-                <div class="card-header">
-                    <span>Pemberitahuan belum dibaca</span>
-                    <span class="float-right"><a href="{{ route('markAsRead') }}">Tandai sudah dibaca</a></span><br>
+                <div class="card-header">Edit User</div>
+                <div class="card-body">
+                    <form action="{{ route('updateUser', $user->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <!-- Form fields for editing user details -->
+                        <div class="form-group">
+                            <label for="name">Nama</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Alamat E-mail</label>
+                            <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="birthday">Tanggal Lahir</label>
+                            <input type="birthday" class="form-control" id="birthday" name="birthday" value="{{ $user->birthday }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Jenis Kelamin</label>
+                            <input type="gender" class="form-control" id="gender" name="gender" value="{{ $user->gender }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone_number">Nomor Telepon</label>
+                            <input type="phone_number" class="form-control" id="phone_number" name="phone_number" value="{{ $user->phone_number }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Alamat</label>
+                            <input type="address" class="form-control" id="address" name="address" value="{{ $user->address }}">
+                        </div>
+                        <!-- Add more form fields as needed -->
+                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                    </form>
                 </div>
-
-                <div class="card-body p-0">
-                    <ul class="list-group">
-                        @forelse (Auth::user()->UnreadNotifications as $notification)
-                        <li class="list-group-item">{{ $notification->data['data'] }}</li>
-                        @empty
-                        <li class="list-group-item">Tidak ada pemberitahuan baru</li>                        
-                        @endforelse
-                    </ul>
-                </div>
-
             </div>
         </div>
 

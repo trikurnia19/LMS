@@ -14,9 +14,9 @@
     
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 @guest
-                {{-- <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">Masuk</a>
-                </li> --}}
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('register') }}">Daftar</a>
                 </li>

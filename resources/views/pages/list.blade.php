@@ -50,9 +50,8 @@
                             <th>Nama</th>
                             <th>E-mail</th>
                             <th>Tanggal Lahir</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Nomor Telepon</th>
-                            <th>Alamat</th>
+                            <th>Tindakan</th>
+                            <th></th>
                             <th></th>
                         </tr>
                     </thead>
@@ -62,11 +61,18 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->birthday }}</td>
-                            <td>{{ $user->gender }}</td>
-                            <td>{{ $user->phone_number }}</td>
-                            <td>{{ $user->address }}</td>
-                            <td><a href="#" class="btn btn-primary">Pensiunkan</a></td>
-                            {{-- <a href="{{ route('user.MakeRetire', $user->id) }}" class="btn btn-primary">Edit</a> --}}
+                            <td>
+                                <a href="{{ route('editUser', $user->id) }}" class="btn btn-success">Edit</a>
+                                <form action="{{ route('deleteUser', $user->id) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                </form>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-primary">Pensiunkan</a>
+                            </td>
+                           
                             
                         </tr>
                         @endforeach

@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col-3 text-right">Lama</div>
                     <div class="col-9">
-                        {{ $application->duration }} day(s)
+                        {{ $application->duration }} hari
                     </div>
                 </div>
                 <div class="row">

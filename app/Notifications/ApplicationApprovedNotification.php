@@ -25,15 +25,15 @@ class ApplicationApprovedNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Leave Application of '.$this->application->applier->name.' is Approved')
-                    ->line('Leave application of '.$this->application->applier->name.' for '.$this->application->duration.' days started from '.$this->application->start_date.' was approved by authority.')
-                    ->line('Enjoy your leave.');
+                    ->subject('Cuti yang diajukan oleh '.$this->application->applier->name.' disetujui')
+                    ->line('Cuti yang diajukan oleh '.$this->application->applier->name.' selama '.$this->application->duration.' hari dimulai dari '.$this->application->start_date.' disetujui oleh Manajemen.')
+                    ->line('Silahkan nikmati cutimu :).');
     }
 
     public function toArray($notifiable)
     {
         return [
-            'data'=>'Leave application of '.$this->application->applier->name.' for '.$this->application->duration.' days started from '.$this->application->start_date.' was approved by authority.',
+            'data'=>'Cuti yang diajukan oleh '.$this->application->applier->name.' selama '.$this->application->duration.' hari dimulai dari '.$this->application->start_date.' disetujui oleh Manajemen.',
         ];
     }
 }
