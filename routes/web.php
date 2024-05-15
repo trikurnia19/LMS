@@ -4,6 +4,7 @@ use App\Http\Controllers\LeaveApplicationController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VacancyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +51,9 @@ Route::group(['middleware' => ['can:application.authorize']], function () {
 
     //Cetak SK Pensiun
     Route::get('generate-pdf/{name}', [PdfController::class, 'generatePdf'])->name('cetakSK');
+
+    // Vacancy Management
+    Route::resource('/vacancy',VacancyController::class);
 
 
 });
