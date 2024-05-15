@@ -4,6 +4,7 @@
 <main class="container">
     <div class="row">
 @include('components.sidebar')
+
         <div class="col-md-9 mb-5">
             <div class="container">
                 <h2>Daftar Karyawan</h2>
@@ -12,9 +13,8 @@
                         <tr>
                             <th>Nama</th>
                             <th>E-mail</th>
-                            <th>Tanggal Lahir</th>
                             <th>Tindakan</th>
-                            <th></th>
+                            <th>Status</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -23,7 +23,6 @@
                         <tr>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->birthday }}</td>
                             <td>
                                 <a href="{{ route('editUser', $user->id) }}" class="btn btn-success">Edit</a>
                                 <form action="{{ route('deleteUser', $user->id) }}" method="POST" style="display: inline;">
@@ -33,8 +32,12 @@
                                 </form>
                             </td>
                             <td>
-                                <a href="#" class="btn btn-primary">Pensiunkan</a>
-                            </td>
+                                <form action="{{ route('pensiunkanUser', $user->id) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="btn btn-primary">Berhak Pensiun</button>
+                                </form>
+                            </td>                            
                            
                             
                         </tr>

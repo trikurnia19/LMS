@@ -4,6 +4,7 @@
 <main class="container">
     <div class="row">
 @include('components.sidebar')
+
         <div class="col-md-9 mb-5">
             <div class="card mb-4">
                 <div class="card-header display-5">Data Pengajuan</div>

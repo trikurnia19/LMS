@@ -56,4 +56,8 @@ Route::group(['middleware' => ['can:application.authorize']], function () {
     // Vacancy Management
     Route::resource('/vacancy',VacancyController::class);
     Route::resource('/role',RoleManagementController::class);
+
+    //Update Role Karyawan
+    Route::put('/users/{user}/pensiunkan',[UserController::class,'pensiunkan'])->name('pensiunkanUser');
+
 });

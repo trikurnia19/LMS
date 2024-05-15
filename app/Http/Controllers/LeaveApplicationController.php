@@ -36,7 +36,7 @@ class LeaveApplicationController extends Controller
         $users = User::role(['line manager', 'admin'])->get();
         Notification::send($users, new NewApplicationNotification($application));
 
-        Session::Flash('success', 'Application Submitted Successfully.');
+        Session::Flash('success', 'Cuti berhasil diajukan');
         return redirect()->route('homeView');
     }
     

@@ -99,7 +99,15 @@ class PagesController extends Controller
 
     public function listRetirement()
     {
-        $users = User::all();
+        // Fetch the users with roles_id = 5
+        $users = DB::table('model_has_roles')
+                    ->join('users', 'model_has_roles.model_id', '=', 'users.id')
+                    ->where('role_id', 5)
+                    ->select('users.name','users.updated_at')
+                    ->get();
+
+        // Pass the filtered list of users to the view
         return view('pages.retire', compact('users'));
     }
+
 }
