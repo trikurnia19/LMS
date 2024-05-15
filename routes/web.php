@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LeaveApplicationController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\RoleManagementController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VacancyController;
 use Illuminate\Support\Facades\Route;
@@ -32,4 +33,5 @@ Route::group(['middleware' => ['can:application.authorize']], function () {
     Route::get('/users', [PagesController::class, 'listUsers'])->name('users');
     Route::post('/user',[UserController::class,'store'])->name('createUser');
     Route::resource('/vacancy',VacancyController::class);
+    Route::resource('/role',RoleManagementController::class);
 });

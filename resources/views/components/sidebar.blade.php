@@ -5,8 +5,11 @@
                 <span>Hai,</span>
                 <span class="display-5 font-italic">{{ Auth::user()->name }}</span>
             </div>
-
+            
             <hr>
+            @can('RoleManagement@index')
+            <a href="{{ Route('role.index') }}" class="btn btn-secondary btn-block">Manajemen Hak Akses</a>
+            @endcan
             <a href="{{ route('notificationView') }}" class="btn btn-secondary btn-block">
                 <span>Pemberitahuan</span>
                 @php $cn = count(Auth::user()->Unreadnotifications) @endphp
@@ -30,8 +33,9 @@
             @can('application.authorize')
             <a href="{{ Route('actionView') }}" class="btn btn-secondary btn-block">Tindakan</a>
             @endcan
-
+            @can('Vacancy@index')
             <a href="{{ Route('vacancy.index') }}" class="btn btn-secondary btn-block">Manajemen Lowongan</a>
+            @endcan
         </div>
     </div>
 </div>
