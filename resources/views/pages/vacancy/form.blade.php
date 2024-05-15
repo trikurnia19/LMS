@@ -8,13 +8,11 @@
             <div class="card">
                 <div class="card-header">{{ $title }}</div>
                 <div class="card-body">
-                    <form action="{{ isset($vacancy) ? url('vacancy/'.$vacancy->id) : route('vacancy.store') }}" method="{{ isset($vacancy) ? 'PUT' : 'POST' }}">
+                    <form action="{{ isset($vacancy) ? url('vacancy/'.$vacancy->id) : route('vacancy.store') }}" method="POST">
+                      @csrf
                       @if (isset($vacancy))
                       @method('PUT')
                       @else
-                      @csrf
-                            @method('POST')
-                        @endif
 
                         <div class="form-group row">
                             <label for="title" class="col-md-4 col-form-label text-md-right">Judul</label>

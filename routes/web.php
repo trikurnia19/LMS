@@ -3,6 +3,7 @@
 use App\Http\Controllers\LeaveApplicationController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\RoleManagementController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VacancyController;
 use Illuminate\Support\Facades\Route;
@@ -54,6 +55,5 @@ Route::group(['middleware' => ['can:application.authorize']], function () {
 
     // Vacancy Management
     Route::resource('/vacancy',VacancyController::class);
-
-
+    Route::resource('/role',RoleManagementController::class);
 });
