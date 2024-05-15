@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Vacancy\StoreVacancyRequest;
+use App\Http\Requests\Vacancy\UpdateVacancyRequest;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
 
@@ -86,11 +87,10 @@ class VacancyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateVacancyRequest $request, $id)
     {
-        return "Test";
         $vacancy = Vacancy::find($id);
-        $req = $request->validate();
+        $req = $request->validated();
         $vacancy->title = $req['title'];
         $vacancy->requirements = $req['requirements'];
         $vacancy->start_date = $req['start_date'];
