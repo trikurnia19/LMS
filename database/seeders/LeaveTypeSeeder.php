@@ -15,19 +15,19 @@ class LeaveTypeSeeder extends Seeder
     public function run()
     {
         LeaveType::create([
-            'type' => 'annual',
+            'type' => 'Tahunan',
             'days' => 5,
         ]);
         LeaveType::create([
-            'type' => 'personal',
+            'type' => 'Pribadi',
             'days' => 5,
         ]);
         LeaveType::create([
-            'type' => 'without pay',
+            'type' => 'Tanpa upah',
             'days' => 5,
         ]);
         LeaveType::create([
-            'type' => 'long service',
+            'type' => 'Cuti panjang',
             'days' => 5,
         ]);
     }

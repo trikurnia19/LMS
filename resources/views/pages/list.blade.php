@@ -27,7 +27,10 @@
                     <a href="{{ Route('users') }}" class="btn btn-secondary btn-block"> Daftar Karyawan</a>
                     @endcan
                     @can('application.authorize')
-                    <a href="#" class="btn btn-secondary btn-block"> Pensiun Karyawan</a>
+                    <a href="{{ Route ('retireList') }}" class="btn btn-secondary btn-block"> Karyawan Pensiun</a>
+                    @endcan
+                    @can('application.authorize')
+                    <a href="#" class="btn btn-secondary btn-block"> Cetak SK Pensiun</a>
                     @endcan
                     @can('application.authorize')
                     <a href="#" class="btn btn-secondary btn-block"> Rekrutmen Karyawan</a>
@@ -47,9 +50,9 @@
                             <th>Nama</th>
                             <th>E-mail</th>
                             <th>Tanggal Lahir</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Nomor Telepon</th>
-                            <th>Alamat</th>
+                            <th>Tindakan</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,9 +61,19 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->birthday }}</td>
-                            <td>{{ $user->gender }}</td>
-                            <td>{{ $user->phone_number }}</td>
-                            <td>{{ $user->address }}</td>
+                            <td>
+                                <a href="{{ route('editUser', $user->id) }}" class="btn btn-success">Edit</a>
+                                <form action="{{ route('deleteUser', $user->id) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                </form>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-primary">Pensiunkan</a>
+                            </td>
+                           
+                            
                         </tr>
                         @endforeach
                     </tbody>

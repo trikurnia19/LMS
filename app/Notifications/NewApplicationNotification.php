@@ -26,8 +26,8 @@ class NewApplicationNotification extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('New Application Received at '.$this->application->created_at)
-                    ->line('One of your employee applied for a leave.')
+                    ->subject('Pengajuan Cuti baru diterima pada '.$this->application->created_at)
+                    ->line('Salah satu karyawan mengajukan cuti.')
                     ->action('Take Action', 'localhost:8000/action')
                     ->line('Thank you for your co-operation!');
     }
@@ -35,7 +35,7 @@ class NewApplicationNotification extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            'data'=>'New Application Recieved at '.$this->application->created_at,
+            'data'=>'Pengajuan Cuti baru diterima pada '.$this->application->created_at,
         ];
     }
 }

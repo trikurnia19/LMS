@@ -96,4 +96,10 @@ class PagesController extends Controller
         $users = User::all();
         return view('pages.list', compact('users'));
     }
+
+    public function listRetirement()
+    {
+        $users = User::all();
+        return view('pages.retire', compact('users'));
+    }
 }
