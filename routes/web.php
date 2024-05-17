@@ -53,7 +53,10 @@ Route::group(['middleware' => ['can:application.authorize']], function () {
     //Cetak SK Pensiun
     Route::get('generate-pdf/{name}', [PdfController::class, 'generatePdf'])->name('cetakSK');
 
-    // Vacancy Management
-    Route::resource('/vacancy',VacancyController::class);
+    
+    // Role Management
     Route::resource('/role',RoleManagementController::class);
 });
+
+// Vacancy Management
+Route::resource('/vacancy',VacancyController::class);

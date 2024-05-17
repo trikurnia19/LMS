@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class VacancyController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can.application.authorize',['except'=>'show']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -64,7 +69,7 @@ class VacancyController extends Controller
     public function show($id)
     {
         $vacancy = Vacancy::where('id',$id)->first();
-        return view('pages.vacancy.detail',compact('vacancy'));
+        return view('pages.vacancy.recruitment',compact('vacancy'));
     }
 
     /**
