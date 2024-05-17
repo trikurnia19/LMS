@@ -8,17 +8,25 @@ use App\Models\LeaveType;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Vacancy;
 
 class PagesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('can.application.authorize',['except'=>'show']);
     }
     
     public function redirectToHomeView()
     {
-        return redirect()->route('homeView');
+        if (Auth::check()){
+            return redirect()->route('homeView');
+        }else {
+            $vacancies = Vacancy::
+            whereBetween(DB::raw('now()'),[DB::raw('start_date'),DB::raw('end_date')])
+            ->where('is_publish',true)  ->get();
+            return view('pages.landingPage',compact('vacancies'));
+        }
     }
 
     public function homeView()
