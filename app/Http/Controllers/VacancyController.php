@@ -10,10 +10,10 @@ use Illuminate\Http\Request;
 class VacancyController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('can.application.authorize',['except'=>'show']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('can.application.authorize',['except'=>'show']);
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -122,4 +122,11 @@ class VacancyController extends Controller
         }
         return redirect('vacancy');
     }
+
+    public function detail($id)
+    {
+        $vacancy = Vacancy::findOrFail($id);
+        return view('pages.vacancy.detail', compact('vacancy'));
+    }
+
 }

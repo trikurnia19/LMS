@@ -48,6 +48,11 @@
                                             <button class="btn btn-danger" type="submit" value="Delete">Delete</button>
                                         </form>
                                     </div>
+                                    <div class="col-md-4">
+                                        <a href="{{ route('detail', $vacancy->id) }}">
+                                            <button class="btn btn-info">Detail</button>
+                                        </a>
+                                    </div>
                                 </div>
                             </td>
                         </tr>

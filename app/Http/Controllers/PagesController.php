@@ -12,10 +12,10 @@ use App\Models\Vacancy;
 
 class PagesController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('can.application.authorize',['except'=>'show']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('can.application.authorize',['except'=>'show']);
+    // }
     
     public function redirectToHomeView()
     {

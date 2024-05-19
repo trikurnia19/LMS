@@ -39,11 +39,15 @@
             @endcan --}}
 
             @can('application.authorize')
-            <a href="#" class="btn btn-secondary btn-block"> Rekrutmen Karyawan</a>
+            <a href="{{ Route('rekrut')}}" class="btn btn-secondary btn-block"> Rekrutmen Karyawan</a>
             @endcan
 
             @can('Vacancy@index')
             <a href="{{ Route('vacancy.index') }}" class="btn btn-secondary btn-block">Manajemen Lowongan</a>
+            @endcan
+
+            @can('application.authorize')
+            <a href="{{ Route('applierList')}}" class="btn btn-secondary btn-block"> Daftar Pelamar</a>
             @endcan
 
             @can('application.authorize')
