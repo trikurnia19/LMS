@@ -21,7 +21,7 @@
                             <a href="javascript:void(0);" class="read-less" data-id="{{ $loop->index }}">Read Less</a>
                         </div>
                     </p>
-                    <a href="{{ route('vacancy.show',$item->id) }}" class="btn btn-primary">Lamar Sekarang</a>
+                    <a href="{{ route('applyNow',$item->id) }}" class="btn btn-primary">Lamar Sekarang</a>
                 </div>
             @endforeach
             @if (count($vacancies) <= 0)
