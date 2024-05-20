@@ -9,7 +9,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-                        <h2>Daftar Lowongan</h2>
+                        <h2>Manajemen Hak Akses</h2>
                     </div>
                     <div class="col-md-8 text-right">
                         <a href="{{ Route('role.create') }}" class="btn btn-primary">Tambah Role</a>

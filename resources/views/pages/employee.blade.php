@@ -4,6 +4,7 @@
 <main class="container">
     <div class="row">
 @include('components.sidebar')
+
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Daftar') }}</div>
@@ -84,7 +85,6 @@
                                 <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" required>
                                     <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Laki - Laki</option>
                                     <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Perempuan</option>
-                                    {{-- <option value="other" {{ old('gender') == 'other' ? 'selected' : '' }}>Other</option> --}}
                                 </select>
 
                                 @error('gender')

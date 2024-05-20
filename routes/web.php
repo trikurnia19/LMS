@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\LeaveApplicationController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PdfController;
@@ -7,6 +8,8 @@ use App\Http\Controllers\RoleManagementController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VacancyController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JobController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -53,9 +56,31 @@ Route::group(['middleware' => ['can:application.authorize']], function () {
     //Cetak SK Pensiun
     Route::get('generate-pdf/{name}', [PdfController::class, 'generatePdf'])->name('cetakSK');
 
-    
     // Role Management
     Route::resource('/role',RoleManagementController::class);
+
+    //Update Role Karyawan
+    Route::put('/users/{user}/pensiunkan',[UserController::class,'pensiunkan'])->name('pensiunkanUser');
+
+    // Rekrutmen Karyawan
+    Route::get('/recruitment', [ApplicantController::class, 'index'])->name('rekrut');
+
+    // Detail Lowongan
+    Route::get('vacancy/{id}', [VacancyController::class, 'detail'])->name('detail');
+
+    // Lamar Pekerjaan
+    Route::get('job/apply', [JobController::class, 'applyForm'])->name('job.apply');
+    Route::post('job/apply', [JobController::class, 'submitApplication'])->name('job.submitApplication');
+
+    // List Pelamar
+    Route::get('/applierList', [JobController::class, 'applierList'])->name('applierList');
+
+    // Detail Pelamar
+    Route::get('/applierDetail', [JobController::class, 'applierDetail'])->name('applierDetail');
+
+    // Delete Pelamar
+    Route::delete('/JobApplier/{applier}', [JobController::class, 'destroy'])->name('deleteApplier');
+
 });
 
 // Vacancy Management

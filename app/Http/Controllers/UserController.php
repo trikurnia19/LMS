@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 
 
 class UserController extends Controller
@@ -36,7 +37,8 @@ class UserController extends Controller
             ]);
             
             $user->assignRole('executive');
-            return redirect('employee');
+            // return redirect('employee');
+            return redirect()->back()->with('success', 'Data karyawan berhasil ditambahkan.');
         }
 
         public function edit(User $user)
@@ -65,15 +67,31 @@ class UserController extends Controller
             'address' => $request->input('address'),
         ]);
         
-            return redirect()->route('users');
+            // return redirect()->route('users');
+            return redirect()->back()->with('success', 'Data karyawan berhasil diperbaharui.');
         }
 
         public function destroy(User $user)
         {
             
             $user->delete();
-
-            return redirect()->route('users');
+            
+            // return redirect()->route('users');
+            return redirect()->back()->with('success', 'Data karyawan berhasil dihapus.');
         }
+
+        public function pensiunkan(User $user)
+        {
+            $newRoleId = 5; // Set the new role ID
+
+            // Update the roles_id in the model_has_roles table
+            DB::table('model_has_roles')
+                ->where('model_id', $user->id)
+                ->update(['role_id' => $newRoleId]);
+
+            // Optionally, you can redirect the user to a specific page after updating the role.
+            return redirect()->back()->with('success', 'Karyawan sudah dirubah menjadi Karyawan Pensiun.');
+        }
+
 
 }

@@ -4,6 +4,7 @@
 <main class="container">
     <div class="row">
 @include('components.sidebar')
+
                 <div class="col-md-9 mb-5">
                     <div class="card"> 
                         <div class="card-header">
