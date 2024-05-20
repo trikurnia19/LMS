@@ -7,33 +7,41 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-# LeaveMS
-LeaveMS is a web-based Leave Management System based on Laravel framework (v8) where we can track leave applications of employees. In this system, employees can apply for leave, and then the Line Manager will process the application. When a new leave application is made, line managers will get notified by a push and email notification. Similarly, if the application is approved then both the applier and payroll managers will get a notification via mail and push. And if the application gets rejected only the applier will get the notification.
-
+# Sistem Manajemen HR
+Sistem Manajemen HR 
+Adalah aplikasi web yang dibuat dengan framework Laravel 8, SMHR memiliki User default sebagai berikut :
+1. Admin 
+2. Payroll
+3. Staff Manager
+4. Pelamar
+5. Pensiun
 ### Framework
 1. Laravel (version 8)
 
-## Install
-01. `git clone https://github.com/sheikhRakib/LeaveMS.git`
-02. `cd LeaveMS`
-03. `composer update`
-04. `cp .env.example .env`
-05. `php artisan key:generate`
-06. `php artisan migrate --seed`
-07. `php artisan serve`
-08. `php artisan queue:work`
+## Persiapan
+01. Buat SQL Database bernama "smhr"
 
-## Note
-* Only Line manaagers and Admins can process an application. Payroll managers will only notified if any application is approved.
-* To get full functionality, a mailer service needs to be set-up.  
 
-## Default and demo users 
-email            | password
------------------|---------
-admin@mail.com   | 12345
-payroll@mail.com | 12345
-line@mail.com    | 12345 
-user@mail.com    | 12345
+## Instalasi
+
+01. `composer update`
+02. `cp .env.example .env`
+03. `php artisan key:generate`
+04. `php artisan migrate --seed`
+05. `php artisan serve`
+
+
+
+## Akun Demo default 
+email             | password
+------------------|---------
+admin@mail.com    | 12345
+payroll@mail.com  | 12345
+staff@mail.com    | 12345 
+karyawan@mail.com | 12345
+pelamar@mail.com  | 12345
+pensiun@mail.com  | 12345
+lolos@mail.com    | 1235
 
 ## License
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

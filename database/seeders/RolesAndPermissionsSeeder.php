@@ -30,6 +30,9 @@ class RolesAndPermissionsSeeder extends Seeder
         $payroll     = Role::create(['name' => 'payroll']);
         $lineManager = Role::create(['name' => 'line manager']);
         $executive   = Role::create(['name' => 'executive']);
+        $pelamar     = Role::create(['name' => 'pelamar']);
+        $pensiun     = Role::create(['name' => 'pensiun']);
+        $lolos       = Role::create(['name' => 'lolos']);
         // =======================================================================
 
         $executive_permissions = [

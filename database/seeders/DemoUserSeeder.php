@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\JobApplier;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -16,30 +17,54 @@ class DemoUserSeeder extends Seeder
     public function run()
     {
         $admin = User::create([
-            'name'     => 'LeaveMS Admin',
+            'name'     => 'Admin',
             'email'    => 'admin@mail.com',
             'password' => Hash::make('12345'),
         ]);
         $admin->assignRole('admin');
+
         $payroll = User::create([
-            'name'     => 'LeaveMS Payroll',
+            'name'     => 'Payroll',
             'email'    => 'payroll@mail.com',
             'password' => Hash::make('12345'),
         ]);
         $payroll->assignRole('payroll');
 
         $lineManager = User::create([
-            'name'     => 'LeaveMS Line Manager',
-            'email'    => 'line@mail.com',
+            'name'     => 'Staff Manager',
+            'email'    => 'staff@mail.com',
             'password' => Hash::make('12345'),
         ]);
         $lineManager->assignRole('line manager');
 
         $user = User::create([
-            'name'     => 'Executive User',
-            'email'    => 'user@mail.com',
+            'name'     => 'Karyawan',
+            'email'    => 'karyawan@mail.com',
             'password' => Hash::make('12345'),
         ]);
         $user->assignRole('executive');
+
+        $pelamar = JobApplier::create([
+            'name'     => 'Pelamar',
+            'email'    => 'pelamar@mail.com',
+            'password' => Hash::make('12345'),
+        ]);
+        $pelamar->assignRole('pelamar');
+
+        $lolos = JobApplier::create([
+            'name'     => 'lolos',
+            'email'    => 'lolos@mail.com',
+            'password' => Hash::make('12345'),
+        ]);
+        $lolos->assignRole('lolos');
+
+        $pensiun = user::create([
+            'name'     => 'Pensiun',
+            'email'    => 'pensiun@mail.com',
+            'password' => Hash::make('12345'),
+        ]);
+        $pensiun->assignRole('pensiun');
+
+        
     }
 }
