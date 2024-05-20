@@ -82,12 +82,8 @@ class UserController extends Controller
 
         public function pensiunkan(User $user)
         {
-            $newRoleId = 5; // Set the new role ID
-
-            // Update the roles_id in the model_has_roles table
-            DB::table('model_has_roles')
-                ->where('model_id', $user->id)
-                ->update(['role_id' => $newRoleId]);
+            $user = User::find($user->id);
+            $user->syncRoles(['pensiun']);
 
             // Optionally, you can redirect the user to a specific page after updating the role.
             return redirect()->back()->with('success', 'Karyawan sudah dirubah menjadi Karyawan Pensiun.');

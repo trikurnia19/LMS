@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Job\StoreJobRequest;
 use Illuminate\Http\Request;
 use App\Models\JobApplier;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
 
 class JobController extends Controller
@@ -31,12 +33,15 @@ class JobController extends Controller
             'name' => $request['name'],
             'address' => $request['address'],
             'birthday' => $request['birthday'],
+            'email' => $request['email'],
+            'phone_number' => $request['phone_number'],
+            'gender' => $request['gender'],
             'university_name' => $request['university_name'],
             'major' => $request['major'],
             'graduating_year'=> $request['graduating_year'],
             'cv_path' => url('/storage/cv/'.$filename)
         ]);
-        $applicant->assignRole('executive');
+        $applicant->assignRole('pelamar');
         $applicant->cv()->create([
             'filename' => $filename,
             'type' => $extension,
@@ -79,7 +84,7 @@ class JobController extends Controller
 
     public function applierList()
         {
-            $applier = JobApplier::all();
+            $applier = JobApplier::role('pelamar')->get();
             return view('pages.job.list', compact('applier'));
         }
 
@@ -100,28 +105,35 @@ class JobController extends Controller
         public function applierPassList()
         {
 
-            $users = DB::table('model_has_roles')
-            ->join('job_appliers', 'model_has_roles.model_id', '=', 'job_appliers.id')
-            ->where('role_id', 7)
-            ->select('job_appliers.name','job_appliers.updated_at')
-            ->get();
-
-            $applier = JobApplier::all();
+            $applier = JobApplier::role('lolos')->get();
             return view('pages.job.listPass', compact('applier'));
         }
 
-        public function terima(JobApplier $applier)
-        {
-            $newRoleId = 7; // Set the new role ID
+public function changeStatus($id,$roleName)
+{
+    $applicant = JobApplier::find($id);
 
-            // Update the roles_id in the model_has_roles table
-            DB::table('model_has_roles')
-                ->where('model_id', $applier->id)
-                ->update(['role_id' => $newRoleId]);
+    if($roleName == 'lolos') {
+        $message = 'Pelamar lolos tahapan selanjutnya';
+        $redirect = 'applierList';
+    }else if($roleName == 'executive'){
+        $redirect = 'applierPassList';
+        $message = 'Pelamar lulus menjadi karyawan.';
+        $user = User::create([
+            'name' => $applicant['name'],
+            'email' => $applicant['email'],
+            'password' => Hash::make('12345'),
+            'birthday'=> $applicant['birthday'],
+            'gender'=> $applicant['gender'],
+            'phone_number'=> $applicant['phone_number'],
+            'address'=> $applicant['address'],
+            ]);
+            
+    }
+    $applicant->syncRoles([$roleName]);
 
-            // Optionally, you can redirect the user to a specific page after updating the role.
-            return redirect()->back()->with('success', 'Pelamar lulus menjadi karyawan.');
-        }
 
-
+    // Optionally, you can redirect the user to a specific page after updating the role.
+    return redirect($redirect)->with('message',$message);
+}
 }

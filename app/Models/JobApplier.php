@@ -16,6 +16,9 @@ class JobApplier extends Model
 
     protected $fillable = [
         'name',
+        'email',
+        'gender',
+        'phone_number',
         'address',
         'birthday',
         'university_name',

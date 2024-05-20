@@ -87,9 +87,8 @@ Route::group(['middleware' => ['can:application.authorize']], function () {
     Route::get('/applierPassList', [JobController::class, 'applierPassList'])->name('applierPassList');
 
     // Terima Pelamar
-    Route::put('/applierPass', [JobController::class, 'terima'])->name('terima');
+    Route::put('/applierPass/{id}/{roleName}', [JobController::class, 'changeStatus'])->name('lolos');
     // Vacancy Management
-    Route::resource('/vacancy',VacancyController::class);
-    
+    Route::resource('/vacancy',VacancyController::class);    
 });
 

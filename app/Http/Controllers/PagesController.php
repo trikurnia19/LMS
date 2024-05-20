@@ -94,18 +94,14 @@ class PagesController extends Controller
 
     public function listUsers()
     {
-        $users = User::all();
+        $users = User::role(['admin','line manager','payroll','executive'])->get();
         return view('pages.list', compact('users'));
     }
 
     public function listRetirement()
     {
         // Fetch the users with roles_id = 5
-        $users = DB::table('model_has_roles')
-                    ->join('users', 'model_has_roles.model_id', '=', 'users.id')
-                    ->where('role_id', 5)
-                    ->select('users.name','users.updated_at')
-                    ->get();
+        $users = User::role('pensiun')->get();
 
         // Pass the filtered list of users to the view
         return view('pages.retire', compact('users'));

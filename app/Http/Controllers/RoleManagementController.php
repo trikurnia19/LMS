@@ -43,7 +43,9 @@ class RoleManagementController extends Controller
     {
         $request = $request->validated();
         $role = Role::create(['name'=> $request['name']]);
-        $role->syncPermissions($request['permissions']);
+        if(isset($request['permissions'])) {
+            $role->syncPermissions($request['permissions']);
+        }
         return redirect('role');
     }
 

@@ -30,7 +30,10 @@ class StoreJobRequest extends FormRequest
             'university_name' => 'nullable|string|max:255',
             'major' => 'nullable|string|max:255',
             'graduating_year' => 'nullable|integer|min:1900|max:'.date('Y'),
-            'cv' =>  'file|required'
-        ];
+            'cv' =>  'file|required',
+            'email' => 'required|string|email',
+            'phone_number' => '',
+            'gender' => '',
+                    ];
     }
 }
