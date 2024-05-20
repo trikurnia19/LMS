@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Job\StoreJobRequest;
 use Illuminate\Http\Request;
 use App\Models\JobApplier;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 
 class JobController extends Controller
 {
@@ -14,20 +16,38 @@ class JobController extends Controller
         return view('pages.job.apply');
     }
 
-    public function submitApplication(Request $request)
+    public function submitApplication(StoreJobRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'address' => 'required|string|max:255',
-            'birthday' => 'nullable|date',
-            'university_name' => 'nullable|string|max:255',
-            'major' => 'nullable|string|max:255',
-            'graduating_year' => 'nullable|integer|min:1900|max:'.date('Y'),
+        $file = $request->file('cv');
+        $request = $request->validated();
+
+        $extension = $file->getClientOriginalExtension();
+        $filename = $file->getClientOriginalName();
+        $filesize = $file->getSize();
+        $filemime = $file->getClientMimeType();
+        $file->storeAs('cv', $filename,'public');
+
+        $applicant = JobApplier::create([
+            'name' => $request['name'],
+            'address' => $request['address'],
+            'birthday' => $request['birthday'],
+            'university_name' => $request['university_name'],
+            'major' => $request['major'],
+            'graduating_year'=> $request['graduating_year'],
+            'cv_path' => url('/storage/cv/'.$filename)
         ]);
+        $applicant->assignRole('executive');
+        $applicant->cv()->create([
+            'filename' => $filename,
+            'type' => $extension,
+            'mime' => $filemime,
+            'size' => $filesize,
+            'upload_id'=> $applicant->id,
+            'upload_type' => 'cv'
+        ]);
+        
 
-        JobApplier::create($validatedData);
-
-        return redirect()->route('job.apply')->with('success', 'Application submitted successfully!');
+        return redirect()->route('indexView')->with('success', 'Application submitted successfully!');
     }
 
     public function store(Request $request)

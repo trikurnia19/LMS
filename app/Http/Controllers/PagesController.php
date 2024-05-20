@@ -12,21 +12,14 @@ use App\Models\Vacancy;
 
 class PagesController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('can.application.authorize',['except'=>'show']);
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     
     public function redirectToHomeView()
     {
-        if (Auth::check()){
             return redirect()->route('homeView');
-        }else {
-            $vacancies = Vacancy::
-            whereBetween(DB::raw('now()'),[DB::raw('start_date'),DB::raw('end_date')])
-            ->where('is_publish',true)  ->get();
-            return view('pages.landingPage',compact('vacancies'));
-        }
     }
 
     public function homeView()

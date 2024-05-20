@@ -9,7 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VacancyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
-
+use App\Http\Controllers\LandingPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +21,10 @@ use App\Http\Controllers\JobController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [PagesController::class, 'redirectToHomeView'])->name('indexView');
+Route::get('/', [LandingPageController::class, 'index'])->name('indexView');
+Route::get('/apply/now/{id}',[LandingPageController::class, 'show'])->name('applyNow');
+Route::post('job/apply', [JobController::class, 'submitApplication'])->name('job.submitApplication');
+
 Route::get('/home', [PagesController::class, 'homeView'])->name('homeView');
 Route::get('/notifications', [PagesController::class, 'notificationView'])->name('notificationView');
 Route::get('/notifications/markasread', [PagesController::class, 'markAsRead'])->name('markAsRead');
@@ -70,7 +73,6 @@ Route::group(['middleware' => ['can:application.authorize']], function () {
 
     // Lamar Pekerjaan
     Route::get('job/apply', [JobController::class, 'applyForm'])->name('job.apply');
-    Route::post('job/apply', [JobController::class, 'submitApplication'])->name('job.submitApplication');
 
     // List Pelamar
     Route::get('/applierList', [JobController::class, 'applierList'])->name('applierList');
@@ -86,7 +88,8 @@ Route::group(['middleware' => ['can:application.authorize']], function () {
 
     // Terima Pelamar
     Route::put('/applierPass', [JobController::class, 'terima'])->name('terima');
+    // Vacancy Management
+    Route::resource('/vacancy',VacancyController::class);
+    
 });
 
-// Vacancy Management
-Route::resource('/vacancy',VacancyController::class);
