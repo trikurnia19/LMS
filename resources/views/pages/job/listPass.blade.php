@@ -25,13 +25,8 @@
                             <td>
                                 
                                 <a href="{{ route('applierDetail') }}" class="btn btn-success">Detail</a>
-
-                                <form action="{{ route('terima', $applier->id) }}" method="POST" style="display: inline;">
-                                    @csrf
-                                    @method('PUT')
-                                    <button type="submit" class="btn btn-primary">Terima</button>
-                                </form>
                             
+                                <a href="#" class="btn btn-success">Terima</a>
 
                                 <form action="{{ route('deleteApplier', $applier->id) }}" method="POST" style="display: inline;">
                                     @csrf

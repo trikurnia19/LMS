@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\JobApplier;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class JobController extends Controller
 {
@@ -75,4 +76,32 @@ class JobController extends Controller
         
             return redirect()->back()->with('success', 'Data Pelamar berhasil dihapus.');
         }
+
+        public function applierPassList()
+        {
+
+            $users = DB::table('model_has_roles')
+            ->join('job_appliers', 'model_has_roles.model_id', '=', 'job_appliers.id')
+            ->where('role_id', 7)
+            ->select('job_appliers.name','job_appliers.updated_at')
+            ->get();
+
+            $applier = JobApplier::all();
+            return view('pages.job.listPass', compact('applier'));
+        }
+
+        public function terima(JobApplier $applier)
+        {
+            $newRoleId = 7; // Set the new role ID
+
+            // Update the roles_id in the model_has_roles table
+            DB::table('model_has_roles')
+                ->where('model_id', $applier->id)
+                ->update(['role_id' => $newRoleId]);
+
+            // Optionally, you can redirect the user to a specific page after updating the role.
+            return redirect()->back()->with('success', 'Pelamar lulus menjadi karyawan.');
+        }
+
+
 }
