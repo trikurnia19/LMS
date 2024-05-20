@@ -51,6 +51,10 @@
             @endcan
 
             @can('application.authorize')
+            <a href="{{ Route('applierPassList')}}" class="btn btn-secondary btn-block"> Daftar Pelamar Lulus Test</a>
+            @endcan
+
+            @can('application.authorize')
             <a href="{{ Route('actionView') }}" class="btn btn-secondary btn-block">Tindakan</a>
             @endcan
 

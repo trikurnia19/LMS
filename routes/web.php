@@ -81,6 +81,11 @@ Route::group(['middleware' => ['can:application.authorize']], function () {
     // Delete Pelamar
     Route::delete('/JobApplier/{applier}', [JobController::class, 'destroy'])->name('deleteApplier');
 
+    // List Pelamar Lulus Test
+    Route::get('/applierPassList', [JobController::class, 'applierPassList'])->name('applierPassList');
+
+    // Terima Pelamar
+    Route::put('/applierPass', [JobController::class, 'terima'])->name('terima');
 });
 
 // Vacancy Management
