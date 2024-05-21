@@ -44,27 +44,6 @@ class DemoUserSeeder extends Seeder
         ]);
         $user->assignRole('executive');
 
-        $pelamar = JobApplier::create([
-            'name'     => 'Pelamar',
-            'email'    => 'pelamar@mail.com',
-            'password' => Hash::make('12345'),
-        ]);
-        $pelamar->assignRole('pelamar');
-
-        $lolos = JobApplier::create([
-            'name'     => 'lolos',
-            'email'    => 'lolos@mail.com',
-            'password' => Hash::make('12345'),
-        ]);
-        $lolos->assignRole('lolos');
-
-        $pensiun = user::create([
-            'name'     => 'Pensiun',
-            'email'    => 'pensiun@mail.com',
-            'password' => Hash::make('12345'),
-        ]);
-        $pensiun->assignRole('pensiun');
-
         
     }
 }

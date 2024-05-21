@@ -7,7 +7,7 @@
 
         <div class="col-md-9 mb-5">
             <div class="container">
-                <h2>Daftar Pelamar</h2>
+                <h2>Daftar Pelamar Lulus Test</h2>
                 <table class="table">
                     <thead>
                         <tr>
@@ -28,7 +28,7 @@
                                 <form action="{{ route('lolos', [$applier->id,'executive']) }}" method="POST" style="display: inline;">
                                     @csrf
                                     @method('PUT')
-                                    <button type="submit" class="btn btn-primary">Terima</button>
+                                    <button type="submit" class="btn btn-primary">Jadikan Karyawan</button>
                                 </form> 
                                 <form action="{{ route('deleteApplier', $applier->id) }}" method="POST" style="display: inline;">
                                     @csrf

@@ -14,7 +14,7 @@
                             <th>Nama</th>
                             <th>Tanggal Pensiun</th>
                             <th>Dokumen</th>
-                            <th></th>
+                            <th>Aksi</th>
                             
                         </tr>
                     </thead>
@@ -25,6 +25,13 @@
                             <td>{{$user->updated_at}}</td>
                             <td>
                                 <a href="{{ route('cetakSK', ['name' => $user->name]) }}" class="btn btn-primary">Cetak SK Pensiun</a>
+                            </td>
+                            <td>
+                                <form action="{{ route('deleteUser', $user->id) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                </form>
                             </td>
                             
                             

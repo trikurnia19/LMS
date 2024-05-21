@@ -9,12 +9,15 @@
 
 # Sistem Manajemen HR
 Sistem Manajemen HR 
-Adalah aplikasi web yang dibuat dengan framework Laravel 8, SMHR memiliki User default sebagai berikut :
+Adalah aplikasi web yang dibuat dengan framework Laravel 8, SMHR memiliki fitur untuk mengatur cuti karyawan, membuat lowongan pekerjaan, mengelola karyawan, mengelola pelamar pekerjaan, dan mengelola pensiun karyawan.
+User default sebagai berikut :
 1. Admin 
 2. Payroll
 3. Staff Manager
-4. Pelamar
-5. Pensiun
+4. Karyawan
+5. Pelamar
+6. Pensiun
+
 ### Framework
 1. Laravel (version 8)
 
@@ -28,7 +31,9 @@ Adalah aplikasi web yang dibuat dengan framework Laravel 8, SMHR memiliki User d
 02. `cp .env.example .env`
 03. `php artisan key:generate`
 04. `php artisan migrate --seed`
-05. `php artisan serve`
+05. `php artisan permission:create-permission-routes`
+06. `php artisan optimize:clear`
+06. `php artisan serve`
 
 
 
@@ -39,5 +44,4 @@ admin@mail.com    | 12345
 payroll@mail.com  | 12345
 staff@mail.com    | 12345 
 karyawan@mail.com | 12345
-pensiun@mail.com  | 12345
 

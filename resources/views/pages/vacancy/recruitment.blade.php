@@ -5,14 +5,14 @@
     <div class="row">
         <div class="col-md-12 mb-5">
             <div class="container">
-                <div class="card-header">{{ __('Apply for Job') }}</div>
+                <div class="card-header">{{ __('Daftar untuk Pekerjaan') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('job.submitApplication') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nama') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" required autocomplete="name" autofocus>
@@ -71,7 +71,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Alamat') }}</label>
 
                             <div class="col-md-6">
                                 <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" required autocomplete="address">
@@ -85,7 +85,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('Birthday') }}</label>
+                            <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Lahir') }}</label>
 
                             <div class="col-md-6">
                                 <input id="birthday" type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday" autocomplete="birthday">
@@ -99,7 +99,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="university_name" class="col-md-4 col-form-label text-md-right">{{ __('University Name') }}</label>
+                            <label for="university_name" class="col-md-4 col-form-label text-md-right">{{ __('Nama Universitas') }}</label>
 
                             <div class="col-md-6">
                                 <input id="university_name" type="text" class="form-control @error('university_name') is-invalid @enderror" name="university_name" autocomplete="university_name">
@@ -113,7 +113,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="major" class="col-md-4 col-form-label text-md-right">{{ __('Major') }}</label>
+                            <label for="major" class="col-md-4 col-form-label text-md-right">{{ __('Jurusan') }}</label>
 
                             <div class="col-md-6">
                                 <input id="major" type="text" class="form-control @error('major') is-invalid @enderror" name="major" autocomplete="major">
@@ -127,7 +127,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="graduating_year" class="col-md-4 col-form-label text-md-right">{{ __('Graduating Year') }}</label>
+                            <label for="graduating_year" class="col-md-4 col-form-label text-md-right">{{ __('Tahun lulus') }}</label>
 
                             <div class="col-md-6">
                                 <input id="graduating_year" type="number" class="form-control @error('graduating_year') is-invalid @enderror" name="graduating_year" autocomplete="graduating_year">
