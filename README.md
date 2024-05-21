@@ -42,6 +42,3 @@ karyawan@mail.com | 12345
 pelamar@mail.com  | 12345
 pensiun@mail.com  | 12345
 lolos@mail.com    | 1235
-
-## License
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
