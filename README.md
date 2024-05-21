@@ -39,6 +39,5 @@ admin@mail.com    | 12345
 payroll@mail.com  | 12345
 staff@mail.com    | 12345 
 karyawan@mail.com | 12345
-pelamar@mail.com  | 12345
 pensiun@mail.com  | 12345
-lolos@mail.com    | 1235
+
