@@ -67,10 +67,7 @@ Route::group(['middleware' => ['can:application.authorize']], function () {
 
     // Rekrutmen Karyawan
     Route::get('/recruitment', [ApplicantController::class, 'index'])->name('rekrut');
-
-    // Detail Lowongan
-    Route::get('vacancy/{id}', [VacancyController::class, 'detail'])->name('detail');
-
+    
     // Lamar Pekerjaan
     Route::get('job/apply', [JobController::class, 'applyForm'])->name('job.apply');
 
@@ -90,5 +87,8 @@ Route::group(['middleware' => ['can:application.authorize']], function () {
     Route::put('/applierPass/{id}/{roleName}', [JobController::class, 'changeStatus'])->name('lolos');
     // Vacancy Management
     Route::resource('/vacancy',VacancyController::class);    
+
+    // Detail Lowongan
+    Route::get('vacancy/detail/{id}', [VacancyController::class, 'detail'])->name('detail');
 });
 
