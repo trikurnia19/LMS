@@ -19,7 +19,6 @@
                         <p><strong>Persyaratan:</strong> {{ $vacancy->requirements }}</p>
                     </div>
                     <div class="card-footer text-right">
-                        <a href="{{ route('job.apply') }}" class="btn btn-success">Lamar Sekarang</a>
                         <button class="btn btn-danger" onclick="history.back()">Kembali</button>
                     </div>
                 </div>

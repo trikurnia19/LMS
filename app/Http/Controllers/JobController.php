@@ -116,6 +116,7 @@ public function changeStatus($id,$roleName)
     if($roleName == 'lolos') {
         $message = 'Pelamar lolos tahapan selanjutnya';
         $redirect = 'applierList';
+        $applicant->syncRoles([$roleName]);
     }else if($roleName == 'executive'){
         $redirect = 'applierPassList';
         $message = 'Pelamar lulus menjadi karyawan.';
@@ -128,9 +129,9 @@ public function changeStatus($id,$roleName)
             'phone_number'=> $applicant['phone_number'],
             'address'=> $applicant['address'],
             ]);
-            
+            $applicant->removeRole('lolos');
+        $user->assignRole($roleName);
     }
-    $applicant->syncRoles([$roleName]);
 
 
     // Optionally, you can redirect the user to a specific page after updating the role.
